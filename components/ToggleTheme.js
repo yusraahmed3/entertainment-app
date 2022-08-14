@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 const ToggleButton = () => {
-  let currentTheme = "";
-
-  useEffect(() => {
-    currentTheme = localStorage.getItem("theme");
-  }, []);
-
   const { theme, setTheme } = useTheme();
   const [isDark, setIsDark] = useState(true);
 

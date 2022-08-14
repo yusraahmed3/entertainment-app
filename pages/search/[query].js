@@ -6,7 +6,11 @@ const SearchResult = ({ items }) => {
     <div className="w-full h-full text-white">
       <div className="flex flex-wrap justify-around w-full mt-5">
         {items?.map((movie) => {
-          return <DiscoverMovies movie={movie} />;
+          return (
+            <div key={movie.id}>
+              <DiscoverMovies movie={movie} />
+            </div>
+          );
         })}
       </div>
     </div>

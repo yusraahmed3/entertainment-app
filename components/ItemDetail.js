@@ -74,7 +74,7 @@ const ItemDetail = ({ item, cast }) => {
           <p>{item.original_language.toUpperCase()}</p>
           <VoteCount vote={item?.vote_average} />
           <p>
-            // if runtime exits, then it's a movie. If not, it's a tv show
+            {/* if runtime exits, then it's a movie. If not, it's a tv show */}
             {item?.runtime
               ? item?.runtime + " mins"
               : item?.number_of_seasons +
@@ -142,7 +142,7 @@ const ItemDetail = ({ item, cast }) => {
             >
               <MdFavorite />
             </button>
-            // show tool tip if not logged in
+            {/*  show tool tip if not logged in */}
             {tooltip && (
               <ReactTooltip
                 id="favTip"
