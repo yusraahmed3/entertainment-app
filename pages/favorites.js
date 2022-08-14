@@ -10,7 +10,11 @@ const Favorites = () => {
       <Titles title="Favorites" />
       <div className="flex w-full mt-5">
         {favs["favorites"]?.reverse().map((movie) => {
-          return <DiscoverMovies movie={movie} />;
+          return (
+            <div key={movie.id}>
+              <DiscoverMovies movie={movie} />{" "}
+            </div>
+          );
         })}
       </div>
     </div>

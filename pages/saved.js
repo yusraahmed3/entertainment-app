@@ -11,7 +11,11 @@ const SavedMovies = () => {
       <Titles title="Watchlist" />
       <div className="flex w-full mt-5">
         {watchlist["watchlist"]?.reverse().map((movie) => {
-          return <DiscoverMovies movie={movie} />;
+          return (
+            <div key={movie.id}>
+              <DiscoverMovies movie={movie} />
+            </div>
+          );
         })}
       </div>
     </div>

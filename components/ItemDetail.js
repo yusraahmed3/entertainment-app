@@ -83,16 +83,16 @@ const ItemDetail = ({ item, cast }) => {
         </div>
         <div className="flex items-center md:space-x-2 text-sm md:text-base text-gray-800 dark:text-gray-200">
           {item?.genres.map((genre, index) => (
-            <>
+            <div key={index}>
               <p>{genre.name}</p>
               {index !== item.genres.length - 1 && <BsDot />}
-            </>
+            </div>
           ))}
         </div>
         <div className="flex flex-wrap space-x-3 text-base">
           <p className="text-gray-600 dark:text-gray-300">Production:</p>
           {item?.production_companies.map((companies, i) => (
-            <p className="">
+            <p className="" key={i}>
               {companies.name}
               {i !== item.production_companies.length - 1 && ","}
             </p>
@@ -104,14 +104,13 @@ const ItemDetail = ({ item, cast }) => {
         </div>
         <div className="text-sm space-y-2">
           <div className="flex">
-            <p className="text-gray-600 dark:text-gray-300">
-              {item.runtime ? "Director" : "Creator"}: &nbsp;
+            <p className="text-gray-600 dark:text-gray-300 mr-1">
+              {item.runtime ? "Director" : "Creator"}:
             </p>
             {item.runtime ? (
               directors?.map((person, i) => (
-                <p>
+                <p key={i}>
                   {i !== directorsLength - 1 ? person.name + "," : person.name}
-                  &nbsp;
                 </p>
               ))
             ) : (
@@ -119,12 +118,11 @@ const ItemDetail = ({ item, cast }) => {
             )}
           </div>
           <p className="flex flex-wrap">
-            <p className="text-gray-600 dark:text-gray-300">Cast: &nbsp;</p>
+            <p className="text-gray-600 dark:text-gray-300 mr-1">Cast: </p>
             {firstTenCast?.map((person, i) => {
               return (
-                <p className="">
+                <p className="mr-1" key={i}>
                   {i !== castLength - 1 ? person.name + "," : person.name}
-                  &nbsp;
                 </p>
               );
             })}

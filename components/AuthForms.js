@@ -39,10 +39,10 @@ export const Login = () => {
         <div>
           <h1 className=" text-3xl transition duration-200">Login</h1>
           <div className="text-sm text-gray-700 dark:text-gray-300 flex mt-2">
-            <p>Don't have an account?&nbsp;</p>
+            <p className="mr-1">Don't have an account?</p>
 
             <p className="text-customBlue flex items-center ">
-              <Link href="/signup">Create an account</Link>&nbsp;
+              <Link href="/signup">Create an account</Link>
               <AiOutlineArrowRight />
             </p>
           </div>
@@ -110,10 +110,10 @@ export const SignUp = () => {
             Create a new account
           </h1>
           <div className="text-sm text-gray-700 dark:text-gray-300 flex mt-2">
-            <p>Already registered?&nbsp;</p>
+            <p className="mr-1">Already registered?</p>
 
             <p className="text-customBlue flex items-center ">
-              <Link href="/login">Log in</Link>&nbsp;
+              <Link href="/login">Log in</Link>
               <AiOutlineArrowRight />
             </p>
           </div>
