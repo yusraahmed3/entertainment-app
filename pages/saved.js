@@ -19,13 +19,15 @@ const SavedMovies = () => {
       <div className="text-dark dark:text-light">
         <Titles title="Watchlist" />
         {watchlist["watchlist"].length === 0 ? (
-          <p className="mt-5">You haven't added any movies to your watchlist</p>
+          <p className="mt-5">
+            You haven&apos;t added any movies to your watchlist
+          </p>
         ) : (
           <div className="flex flex-wrap w-full mt-5">
             {watchlist["watchlist"]?.reverse().map((movie) => {
               return (
-                <div>
-                  <div key={movie.id}>
+                <div key={movie.id}>
+                  <div>
                     <DiscoverMovies movie={movie} />{" "}
                   </div>
                   <span

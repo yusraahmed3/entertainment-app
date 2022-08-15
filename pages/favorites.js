@@ -19,13 +19,15 @@ const Favorites = () => {
       <div className="text-dark dark:text-light">
         <Titles title="Favorites" />
         {favs["favorites"].length === 0 ? (
-          <p className="mt-5">You haven't added any movies to your favorites</p>
+          <p className="mt-5">
+            You haven&apos;t added any movies to your favorites
+          </p>
         ) : (
           <div className="flex flex-wrap w-full mt-5">
             {favs["favorites"]?.reverse().map((movie) => {
               return (
-                <div>
-                  <div key={movie.id}>
+                <div key={movie.id}>
+                  <div>
                     <DiscoverMovies movie={movie} />{" "}
                   </div>
                   <span
