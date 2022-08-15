@@ -15,8 +15,6 @@ export default function Home({
   romanceMovies,
 }) {
   const [isMovie, setIsMovie] = useState(false);
-  const { isAuthenticated, getUserProfile } = useContext(userContext);
-  const router = useRouter();
 
   return (
     <div className="w-full h-full">

@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Message } from "./Messages";
 
 const Profile = () => {
-  const { user, changeProfilePicture, getUserProfile, error, message } =
+  const { user, changeProfilePicture, error, message } =
     useContext(userContext);
   const inputRef = useRef(null);
   const router = useRouter();
@@ -24,10 +24,7 @@ const Profile = () => {
 
   return (
     <>
-      {error !== null ||
-        (message !== "User not found" && (
-          <Message error={error} message={message} />
-        ))}
+      {error !== null && <Message error={error} message={message} />}
 
       <div className="text-dark dark:text-gray-300 flex flex-col space-y-10 w-full h-full">
         <Titles title="Profile settings" />

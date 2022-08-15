@@ -13,16 +13,18 @@ export function UserProvider({ children }) {
   const router = useRouter();
 
   const getUserProfile = async () => {
-    await axios
-      .get("/api/users/getUser", { params: { id: userState?.id } })
-      .then(({ data }) => {
-        setUser(data);
-      })
-      .catch((error) => {
-        setError(error.response.data.error);
-        setMessage(error.response.data.message);
-        setTimeout(() => setError(null), 10000);
-      });
+    if (userState) {
+      await axios
+        .get("/api/users/getUser", { params: { id: userState?.id } })
+        .then(({ data }) => {
+          setUser(data);
+        })
+        .catch((error) => {
+          setError(error.response.data.error);
+          setMessage(error.response.data.message);
+          setTimeout(() => setError(null), 10000);
+        });
+    }
   };
 
   const changeProfilePicture = async (data) => {
@@ -79,7 +81,6 @@ export function UserProvider({ children }) {
 
   const isAuthenticated = () => {
     const token = JSON.parse(localStorage.getItem("user"));
-
     if (token) {
       setUserState(token);
       const decodedToken = jwtDecode(token.token);
@@ -87,15 +88,13 @@ export function UserProvider({ children }) {
         setUserState(null);
         localStorage.removeItem("user");
       }
-      getUserProfile();
-    } else {
-      setUserState(null);
     }
   };
 
   const logOut = () => {
     localStorage.removeItem("user");
     setUserState(null);
+    setUser(null);
     router.push("/");
   };
 

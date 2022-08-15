@@ -47,14 +47,16 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const query = params?.query;
   const { data: movieSearch } = await axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US&query=${query}&page=1&include_adult=true`
+    `https://api.themoviedb.org/3/search/movie?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US&query=${query}&include_adult=true`
   );
 
   const { data: showSearch } = await axios.get(
-    `https://api.themoviedb.org/3/search/tv?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US&page=1&query=${query}&include_adult=false`
+    `https://api.themoviedb.org/3/search/tv?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US&query=${query}&include_adult=false`
   );
 
   const allItems = [...movieSearch.results, ...showSearch.results];
+
+  console.log(movieSearch);
 
   return {
     props: {

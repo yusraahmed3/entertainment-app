@@ -17,16 +17,16 @@ export default async function handler(req, res) {
       }
       const watchlist = await User.updateOne(
         { _id: ObjectId(id) },
-        { $push: { watchlist: item } }
+        { $addToSet: { watchlist: item } }
       );
       res
         .status(201)
-        .json({ watchlist, error: false, message: "Added to watchlist" });
+        .json({ watchlist, error: false, message: "Added to watchlist!" });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Server error", error: true });
     }
-  } else {
+  } else if (req.method === "GET") {
     try {
       const result = await User.findOne({ _id: objectId });
       if (!result) {
@@ -41,7 +41,35 @@ export default async function handler(req, res) {
       res.status(200).json(watchlist);
     } catch (error) {
       console.log(error);
-      res.status(500).json(error);
+      res.status(500).json({ error: true, message: error.message });
+    }
+  } else {
+    try {
+      const result = await User.findOne({ _id: item.userId });
+      if (!result) {
+        return res
+          .status(404)
+          .json({ message: "No user found. Create an account!", error: true });
+      }
+
+      await User.updateOne(
+        { _id: item.userId },
+        { $pull: { watchlist: { id: item.itemId } } },
+        { safe: true, multi: true }
+      )
+        .then(() =>
+          res
+            .status(200)
+            .json({ error: false, message: "Removed from watchlist!" })
+        )
+        .catch(() =>
+          res
+            .status(401)
+            .json({ error: true, message: "Something went wrong!" })
+        );
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: true, message: error.message });
     }
   }
 }

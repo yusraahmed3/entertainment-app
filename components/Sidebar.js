@@ -8,12 +8,17 @@ import { BiLogOutCircle } from "react-icons/bi";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import userContext from "./UserContext";
 
 const Sidebar = () => {
-  const { userState, logOut, user } = useContext(userContext);
   const router = useRouter();
+
+  const { getUserProfile, userState, user, logOut } = useContext(userContext);
+
+  useEffect(() => {
+    getUserProfile();
+  }, [userState]);
 
   // for if user is logged in
   const loggedInSideBarItems = [
@@ -67,7 +72,7 @@ const Sidebar = () => {
           className="w-12 h-12 relative rounded-full overflow-hidden cursor-pointer"
         >
           <Image
-            src={user.image}
+            src={user?.image}
             alt="User profile"
             unoptimized={true}
             layout="fill"

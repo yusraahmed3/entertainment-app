@@ -7,10 +7,12 @@ import { useState, useContext } from "react";
 import userContext from "./UserContext";
 import ReactTooltip from "react-tooltip";
 import actionsContext from "./ActionsContext";
+import { Message } from "./Messages";
 
 const ItemDetail = ({ item, cast }) => {
   const { userState } = useContext(userContext);
-  const { addToFavs, addToWatchlist } = useContext(actionsContext);
+  const { addToFavs, addToWatchlist, error, message } =
+    useContext(actionsContext);
   const [tooltip, showTooltip] = useState(false);
   // show the first ten cast members
   const firstTenCast = cast?.cast?.slice(0, 10);
@@ -63,10 +65,10 @@ const ItemDetail = ({ item, cast }) => {
   return (
     <div
       key={item?.id}
-      className="text-dark dark:text-light flex flex-col md:flex-row items-center md:items-start space-x-10 w-full h-full pt-4"
+      className="text-dark dark:text-light flex flex-col md:flex-row items-center md:items-start space-x-10 w-full pt-4"
     >
       <LargeImage poster_path={item?.poster_path} />
-      <div className="w-full md:w-1/2 flex flex-col space-y-2 relative mt-5 md:mt-0 items-center md:items-start h-full ">
+      <div className="w-full md:w-1/2 flex flex-col space-y-2 mt-5 md:mt-0 items-center md:items-start ">
         <h1 className="text-2xl md:text-3xl">{item?.title || item?.name}</h1>
         <div className="flex items-center space-x-4 text-sm md:text-base md:space-x-8 text-gray-800 dark:text-gray-300">
           <p>
@@ -85,27 +87,28 @@ const ItemDetail = ({ item, cast }) => {
         </div>
         <div className="flex items-center md:space-x-2 text-sm md:text-base text-gray-800 dark:text-gray-200">
           {item?.genres.map((genre, index) => (
-            <div key={index}>
+            <div key={index} className="flex items-center md:space-x-2">
               <p>{genre.name}</p>
               {index !== item?.genres.length - 1 && <BsDot />}
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap space-x-3 text-base">
-          <p className="text-gray-600 dark:text-gray-300">Production:</p>
-          {item?.production_companies.map((companies, i) => (
-            <p className="" key={i}>
-              {companies.name}
-              {i !== item?.production_companies.length - 1 && ","}
-            </p>
-          ))}
-        </div>
+
         <div className="py-6">
-          <h2 className=" text-gray-600 dark:text-gray-300">Overview</h2>
-          <p className=" tracking-wide leading-relaxed">{item?.overview}</p>
+          <div className="flex flex-wrap mb-1">
+            <p className="text-gray-600 dark:text-gray-300 mr-1">Production:</p>
+            {item?.production_companies.map((companies, i) => (
+              <p className="mr-1" key={i}>
+                {companies.name}
+                {i !== item?.production_companies.length - 1 && ","}
+              </p>
+            ))}
+          </div>
+          <h2 className="text-gray-600 dark:text-gray-300">Overview:</h2>
+          <p className="tracking-wide leading-relaxed">{item?.overview}</p>
         </div>
-        <div className="text-sm space-y-2">
-          <div className="flex">
+        <div className="space-y-2">
+          <div className="flex flex-wrap">
             <p className="text-gray-600 dark:text-gray-300 mr-1">
               {item?.runtime ? "Director" : "Creator"}:
             </p>
@@ -134,7 +137,7 @@ const ItemDetail = ({ item, cast }) => {
             })}
           </p>
         </div>
-        <div className="flex self-start absolute bottom-28 space-x-5">
+        <div className="flex self-start space-x-5 pt-5 items-baseline w-full">
           <div className="flex flex-col">
             <button
               onMouseOver={onMouseOver}
@@ -142,7 +145,7 @@ const ItemDetail = ({ item, cast }) => {
               data-tip
               data-for="favTip"
               onClick={() => addToFavsHandler(item)}
-              className="bg-[#6290C8] text-white text-2xl font-bold p-2 hover:bg-[#4b6e99] rounded-md "
+              className="bg-customBlue text-white text-2xl font-bold p-2 hover:bg-[#4b6e99] rounded-md "
             >
               <MdFavorite />
             </button>
@@ -165,7 +168,7 @@ const ItemDetail = ({ item, cast }) => {
               data-tip
               data-for="watchListTip"
               onClick={() => addToWatchlistHandler(item)}
-              className="bg-[#6290C8] text-white text-2xl font-bold p-2 hover:bg-[#4b6e99] rounded-md "
+              className="bg-customBlue text-white text-2xl font-bold p-2 hover:bg-[#4b6e99] rounded-md "
             >
               <BiListPlus />
             </button>
@@ -180,6 +183,7 @@ const ItemDetail = ({ item, cast }) => {
               </ReactTooltip>
             )}
           </div>
+          {error !== null && <Message error={error} message={message} />}
         </div>
       </div>
     </div>

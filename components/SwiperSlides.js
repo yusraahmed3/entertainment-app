@@ -37,7 +37,7 @@ export const SwiperSlides = ({ data, onClick }) => {
           <SwiperSlide
             onClick={() => navToDetail(item)}
             key={item.id}
-            className="mr-0 md:mr-2  flex-1 cursor-pointer"
+            className="flex-1 cursor-pointer md:mx-2"
           >
             <SliderImage poster_path={item.poster_path} />
             <div className="text-gray-900 dark:text-gray-400 flex items-center justify-between text-xs pt-2">
