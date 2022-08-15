@@ -18,7 +18,7 @@ const SavedMovies = () => {
       {error !== null && <Message error={error} message={message} />}
       <div className="text-dark dark:text-light">
         <Titles title="Watchlist" />
-        {watchlist["watchlist"].length === 0 ? (
+        {watchlist["watchlist"]?.length === 0 ? (
           <p className="mt-5">
             You haven&apos;t added any movies to your watchlist
           </p>
