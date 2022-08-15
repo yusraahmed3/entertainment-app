@@ -56,8 +56,6 @@ export const getStaticProps = async ({ params }) => {
 
   const allItems = [...movieSearch.results, ...showSearch.results];
 
-  console.log(movieSearch);
-
   return {
     props: {
       items: allItems,

@@ -1,8 +1,8 @@
 import User from "../../../models/User";
-import dbConnect from "../../../utils/dbConnection";
 import nextConnect from "next-connect";
 import multer from "multer";
 import { ObjectId } from "mongodb";
+import path from "path";
 
 export const config = {
   api: {
@@ -10,9 +10,11 @@ export const config = {
   },
 };
 
+const __dirname = path.resolve();
+
 let storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "public/uploads");
+    callback(null, path.join(__dirname, "public/uploads"));
   },
   filename: (req, file, callback) => {
     callback(null, Date.now() + "--" + file.originalname);
@@ -63,7 +65,6 @@ handler.post(async (req, res) => {
     }
 
     const updatedImage = await user.save();
-    console.log(updatedImage);
     res.status(200).json({
       message: "Image Uploaded",
       image: updatedImage.image,
