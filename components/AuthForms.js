@@ -56,7 +56,7 @@ export const Login = () => {
           className="bg-transparent outline-none border border-gray-400 rounded-2xl px-2 py-3 focus:border-blue-400 "
         />
         <input
-          type="text"
+          type="password"
           value={user.password}
           name="password"
           onChange={(e) => setUser({ ...user, password: e.target.value })}
@@ -126,7 +126,7 @@ export const SignUp = () => {
           className="bg-transparent outline-none border border-gray-400 rounded-2xl px-2 py-3 focus:border-blue-400"
         />
         <input
-          type="text"
+          type="password"
           name="password"
           value={user.password}
           onChange={(e) => setUser({ ...user, password: e.target.value })}
@@ -134,7 +134,7 @@ export const SignUp = () => {
           className="bg-transparent outline-none border border-gray-400 rounded-2xl px-2 py-3 focus:border-blue-400"
         />
         <input
-          type="text"
+          type="password"
           name="confirmPassword"
           value={user.confirmPassword}
           onChange={(e) =>

@@ -28,7 +28,7 @@ const EmailChangeForm = () => {
           <div className="flex flex-col space-y-2">
             <label>Password</label>
             <input
-              type="text"
+              type="password"
               value={email.password}
               onChange={(e) => setEmail({ ...email, password: e.target.value })}
               name="password"

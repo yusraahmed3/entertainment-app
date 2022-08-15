@@ -12,10 +12,6 @@ const Profile = () => {
   const inputRef = useRef(null);
   const router = useRouter();
 
-  useEffect(() => {
-    getUserProfile();
-  }, []);
-
   const handlePictureChange = () => {
     inputRef.current?.click();
   };
@@ -28,7 +24,10 @@ const Profile = () => {
 
   return (
     <>
-      {error !== null && <Message error={error} message={message} />}
+      {error !== null ||
+        (message !== "User not found" && (
+          <Message error={error} message={message} />
+        ))}
 
       <div className="text-dark dark:text-gray-300 flex flex-col space-y-10 w-full h-full">
         <Titles title="Profile settings" />
@@ -43,7 +42,7 @@ const Profile = () => {
           <div className="mt-5 flex items-end">
             <div className="w-20 h-20 relative ring-1 ring-gray-200 rounded-full overflow-hidden">
               <Image
-                src={user.image}
+                src={user?.image}
                 alt="User profile"
                 unoptimized={true}
                 layout="fill"

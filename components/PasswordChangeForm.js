@@ -27,7 +27,7 @@ const PasswordChangeForm = () => {
           <div className="flex flex-col space-y-2">
             <label>Old password</label>
             <input
-              type="text"
+              type="password"
               value={password.oldPassword}
               onChange={(e) =>
                 setPassword({ ...password, oldPassword: e.target.value })
@@ -40,7 +40,7 @@ const PasswordChangeForm = () => {
           <div className="flex flex-col space-y-2">
             <label>New password</label>
             <input
-              type="text"
+              type="password"
               value={password.newPassword}
               onChange={(e) =>
                 setPassword({ ...password, newPassword: e.target.value })
@@ -53,7 +53,7 @@ const PasswordChangeForm = () => {
           <div className="flex flex-col space-y-2">
             <label>Confirm new password</label>
             <input
-              type="text"
+              type="password"
               value={password.confirmNewPass}
               onChange={(e) =>
                 setPassword({ ...password, confirmNewPass: e.target.value })

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 
 const userContext = createContext();
@@ -87,6 +87,7 @@ export function UserProvider({ children }) {
         setUserState(null);
         localStorage.removeItem("user");
       }
+      getUserProfile();
     } else {
       setUserState(null);
     }
@@ -97,6 +98,10 @@ export function UserProvider({ children }) {
     setUserState(null);
     router.push("/");
   };
+
+  useEffect(() => {
+    isAuthenticated();
+  }, [router.pathname]);
 
   const state = {
     userState,

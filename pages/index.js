@@ -18,11 +18,6 @@ export default function Home({
   const { isAuthenticated, getUserProfile } = useContext(userContext);
   const router = useRouter();
 
-  useEffect(() => {
-    isAuthenticated();
-    getUserProfile();
-  }, [router.pathname]);
-
   return (
     <div className="w-full h-full">
       <div className="w-full h-full text-dark dark:text-light flex flex-col space-y-16">
