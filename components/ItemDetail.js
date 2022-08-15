@@ -78,7 +78,7 @@ const ItemDetail = ({ item, cast }) => {
             {item?.runtime
               ? item?.runtime + " mins"
               : item?.number_of_seasons +
-                `${item.number_of_seasons > 1 ? " seasons" : " season"}  `}
+                `${item?.number_of_seasons > 1 ? " seasons" : " season"}  `}
           </p>
         </div>
         <div className="flex items-center md:space-x-2 text-sm md:text-base text-gray-800 dark:text-gray-200">
@@ -94,7 +94,7 @@ const ItemDetail = ({ item, cast }) => {
           {item?.production_companies.map((companies, i) => (
             <p className="" key={i}>
               {companies.name}
-              {i !== item.production_companies.length - 1 && ","}
+              {i !== item?.production_companies.length - 1 && ","}
             </p>
           ))}
         </div>
@@ -105,9 +105,9 @@ const ItemDetail = ({ item, cast }) => {
         <div className="text-sm space-y-2">
           <div className="flex">
             <p className="text-gray-600 dark:text-gray-300 mr-1">
-              {item.runtime ? "Director" : "Creator"}:
+              {item?.runtime ? "Director" : "Creator"}:
             </p>
-            {item.runtime ? (
+            {item?.runtime ? (
               directors?.map((person, i) => (
                 <p key={i}>
                   {i !== directorsLength - 1 ? person.name + "," : person.name}
