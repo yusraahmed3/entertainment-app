@@ -22,6 +22,8 @@ const ItemDetail = ({ item, cast }) => {
   const creators = cast?.crew?.filter(
     (crew) => crew.job === "Executive Producer"
   );
+
+  const creatorsLength = creators?.length;
   const directorsLength = directors?.length;
 
   const onMouseOver = () => {
@@ -85,7 +87,7 @@ const ItemDetail = ({ item, cast }) => {
           {item?.genres.map((genre, index) => (
             <div key={index}>
               <p>{genre.name}</p>
-              {index !== item.genres.length - 1 && <BsDot />}
+              {index !== item?.genres.length - 1 && <BsDot />}
             </div>
           ))}
         </div>
@@ -107,15 +109,19 @@ const ItemDetail = ({ item, cast }) => {
             <p className="text-gray-600 dark:text-gray-300 mr-1">
               {item?.runtime ? "Director" : "Creator"}:
             </p>
-            {item?.runtime ? (
-              directors?.map((person, i) => (
-                <p key={i}>
-                  {i !== directorsLength - 1 ? person.name + "," : person.name}
-                </p>
-              ))
-            ) : (
-              <p>{creators[0]?.name}</p>
-            )}
+            {item?.runtime
+              ? directors?.map((person, i) => (
+                  <p key={i} className="mr-1">
+                    {i !== directorsLength - 1
+                      ? person.name + ","
+                      : person.name}
+                  </p>
+                ))
+              : creators?.map((person, i) => (
+                  <p key={i} className="mr-1">
+                    {i !== creatorsLength - 1 ? person.name + "," : person.name}
+                  </p>
+                ))}
           </div>
           <p className="flex flex-wrap">
             <p className="text-gray-600 dark:text-gray-300 mr-1">Cast: </p>
