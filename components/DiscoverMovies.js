@@ -5,7 +5,7 @@ import { ImageComponent } from "./Image";
 
 const DiscoverMovies = ({ movie }) => {
   const router = useRouter();
-  const id = movie.id;
+  const id = movie?.id;
 
   return (
     <div
@@ -23,17 +23,17 @@ const DiscoverMovies = ({ movie }) => {
       className="w-32 md:w-56 my-2 cursor-pointer"
     >
       <div className="w-32 h-52 md:w-52 md:h-72 relative">
-        <ImageComponent poster_path={movie.poster_path} />
+        <ImageComponent poster_path={movie?.poster_path} />
       </div>
       <div className="text-gray-800 dark:text-gray-400 text-sm flex items-center justify-between md:pr-5">
         <p>
           {movie?.release_date?.split("-")[0] ||
             movie?.first_air_date?.split("-")[0]}
         </p>
-        <VoteCount vote={movie.vote_average} />
+        <VoteCount vote={movie?.vote_average} />
       </div>
       <h1 className="text-black font-medium dark:text-light text-sm ">
-        {movie.title || movie.name}
+        {movie?.title || movie?.name}
       </h1>
     </div>
   );

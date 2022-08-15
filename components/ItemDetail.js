@@ -71,7 +71,7 @@ const ItemDetail = ({ item, cast }) => {
             {item?.release_date?.split("-")[0] ||
               item?.first_air_date?.split("-")[0]}
           </p>
-          <p>{item.original_language.toUpperCase()}</p>
+          <p>{item?.original_language.toUpperCase()}</p>
           <VoteCount vote={item?.vote_average} />
           <p>
             {/* if runtime exits, then it's a movie. If not, it's a tv show */}

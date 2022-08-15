@@ -12,12 +12,10 @@ export const getStaticPaths = async () => {
     "https://api.themoviedb.org/3/discover/movie?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
   );
 
-  // console.log("from static paths" + data);
-
   const paths = data.results.map((movie) => {
     return {
       params: {
-        id: `${movie.id}`,
+        id: `${movie?.id}`,
       },
     };
   });
@@ -37,13 +35,6 @@ export const getStaticProps = async ({ params }) => {
   const { data: cast } = await axios.get(
     `https://api.themoviedb.org/3/movie/${ID}/credits?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US`
   );
-
-  // console.log(cast.crew);
-
-  // const { data: getVideos } = await axios.get(`
-  // https://api.themoviedb.org/3/movie/${ID}/videos?api_key=d27a24aa42b8a15a34f92d9975a273e9&language=en-US`);
-
-  // console.log("from static props" + movieDetails);
 
   return {
     props: {

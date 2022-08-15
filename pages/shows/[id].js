@@ -15,7 +15,7 @@ export const getStaticPaths = async () => {
   const paths = data.results.map((show) => {
     return {
       params: {
-        id: `${show.id}`,
+        id: `${show?.id}`,
       },
     };
   });

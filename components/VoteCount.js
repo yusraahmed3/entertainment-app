@@ -6,7 +6,7 @@ export const VoteCount = ({ vote }) => {
       <p>
         <BsStarFill />
       </p>
-      <p>{vote.toFixed(1)}</p>
+      <p>{vote?.toFixed(1)}</p>
     </div>
   );
 };
