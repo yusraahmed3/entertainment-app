@@ -24,17 +24,16 @@ export default async function handler(req, res) {
       const token = jwt.sign({ email, id: result._id }, process.env.SECRET, {
         expiresIn: "1h",
       });
-      res
-        .status(200)
-        .json({
-          email,
-          id: result._id.toString(),
-          image: result.image,
-          token,
-          error: false,
-        });
+      res.status(200).json({
+        email,
+        id: result._id.toString(),
+        image: result.image,
+        token,
+        error: false,
+      });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: true, message: "Error logging in" });
   }
 }

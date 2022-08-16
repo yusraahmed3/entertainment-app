@@ -14,6 +14,7 @@ export const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    console.log("Inside login function");
     await axios
       .post("/api/users/authenticate", user)
       .then(({ data }) => {
@@ -22,9 +23,10 @@ export const Login = () => {
         router.push("/");
       })
       .catch((error) => {
+        console.log(error);
         setError(error.response.data.error);
         setMessage(error.response.data.message);
-        setTimeout(() => setError(null), 10000);
+        setTimeout(() => setError(null), 3000);
       });
   };
 

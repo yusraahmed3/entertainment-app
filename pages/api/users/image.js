@@ -14,9 +14,9 @@ export const config = {
 };
 
 aws.config.update({
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  region: process.env.AWS_DEFAULT_REGION,
+  secretAccessKey: process.env.PRIVATE_AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.PRIVATE_AWS_ACCESS_KEY,
+  region: process.env.PRIVATE_AWS_DEFAULT_REGION,
 });
 
 var s3 = new aws.S3({
@@ -25,7 +25,7 @@ var s3 = new aws.S3({
 
 let storage = multerS3({
   s3: s3,
-  bucket: process.env.AWS_BUCKET,
+  bucket: process.env.PRIVATE_AWS_BUCKET,
   acl: "public-read",
   contentType: multerS3.AUTO_CONTENT_TYPE,
   metadata(req, file, cb) {
