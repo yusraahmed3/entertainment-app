@@ -3,6 +3,8 @@ import nextConnect from "next-connect";
 import multer from "multer";
 import { ObjectId } from "mongodb";
 import path from "path";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
 
 export const config = {
   api: {
@@ -10,14 +12,35 @@ export const config = {
   },
 };
 
-const __dirname = path.resolve();
+aws.config.update({
+  secretAccessKey: proccess.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: proccess.env.AWS_ACCESS_KEY,
+  region: proccess.env.AWS_DEFAULT_REGION,
+});
 
-let storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, path.join(__dirname, "/tmp"));
+var s3 = new aws.S3({
+  /*...*/
+});
+
+// let storage = multer.diskStorage({
+//   destination: (req, file, callback) => {
+//     callback(null, path.join(__dirname, "/tmp"));
+//   },
+//   filename: (req, file, callback) => {
+//     callback(null, Date.now() + "--" + file.originalname);
+//   },
+// });
+
+let storage = multerS3({
+  s3: s3,
+  bucket: process.env.AWS_BUCKET,
+  acl: "public-read",
+  contentType: multerS3.AUTO_CONTENT_TYPE,
+  metadata(req, file, cb) {
+    cb(null, { fieldName: file.fieldname });
   },
-  filename: (req, file, callback) => {
-    callback(null, Date.now() + "--" + file.originalname);
+  key(req, file, cb) {
+    cb(null, Date.now() + "--" + file.originalname);
   },
 });
 
