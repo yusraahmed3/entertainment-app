@@ -23,7 +23,7 @@ export const SwiperSlides = ({ data, onClick }) => {
       navigation
       slidesPerView="auto"
       spaceBetween={10}
-      className="w-[28rem] md:w-[40rem] lg:w-[75rem] flex"
+      className="w-[28rem] md:w-[48rem] lg:w-[78rem] flex"
     >
       {data.results.map((item, i) => {
         return (
