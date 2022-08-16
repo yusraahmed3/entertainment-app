@@ -3,7 +3,8 @@ import nextConnect from "next-connect";
 import multer from "multer";
 import { ObjectId } from "mongodb";
 import path from "path";
-import multerS3 from "multer-s3";
+import dbConnect from "../../../utils/dbConnection";
+import multerS3 from "multer-s3-v2";
 import aws from "aws-sdk";
 
 export const config = {
@@ -13,23 +14,14 @@ export const config = {
 };
 
 aws.config.update({
-  secretAccessKey: proccess.env.AWS_SECRET_ACCESS_KEY,
-  accessKeyId: proccess.env.AWS_ACCESS_KEY,
-  region: proccess.env.AWS_DEFAULT_REGION,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  region: process.env.AWS_DEFAULT_REGION,
 });
 
 var s3 = new aws.S3({
   /*...*/
 });
-
-// let storage = multer.diskStorage({
-//   destination: (req, file, callback) => {
-//     callback(null, path.join(__dirname, "/tmp"));
-//   },
-//   filename: (req, file, callback) => {
-//     callback(null, Date.now() + "--" + file.originalname);
-//   },
-// });
 
 let storage = multerS3({
   s3: s3,
@@ -46,18 +38,6 @@ let storage = multerS3({
 
 const upload = multer({
   storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype == "image/png" ||
-      file.mimetype == "image/jpg" ||
-      file.mimetype == "image/jpeg"
-    ) {
-      cb(null, true);
-    } else {
-      cb(null, false);
-      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
-    }
-  },
 });
 
 const uploadFile = upload.single("file");
@@ -78,13 +58,15 @@ handler.use(uploadFile);
 handler.post(async (req, res) => {
   const id = req.query;
   const objectId = ObjectId(id);
+  console.log(objectId);
+  await dbConnect();
   try {
-    const filePath = req.file.path.replace("public", "");
     const user = await User.findById(objectId);
+    console.log(user);
     if (!user) {
       return res.status(400).json({ message: "User not found", error: true });
     } else {
-      user.image = filePath || user.image;
+      user.image = req.file.location || user.image;
     }
 
     const updatedImage = await user.save();
