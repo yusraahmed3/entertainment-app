@@ -65,10 +65,10 @@ const ItemDetail = ({ item, cast }) => {
   return (
     <div
       key={item?.id}
-      className="text-dark dark:text-light flex flex-col md:flex-row items-center md:items-start space-x-10 w-full pt-4"
+      className="text-dark dark:text-light flex flex-col lg:flex-row items-center lg:items-start lg:space-x-10 w-full pt-4"
     >
       <LargeImage poster_path={item?.poster_path} />
-      <div className="w-full md:w-1/2 flex flex-col space-y-2 mt-5 md:mt-0 items-center md:items-start ">
+      <div className="w-full md:px-5  lg:w-1/2 flex flex-col space-y-2 mt-5 lg:mt-0 items-center lg:items-start ">
         <h1 className="text-2xl md:text-3xl">{item?.title || item?.name}</h1>
         <div className="flex items-center space-x-4 text-sm md:text-base md:space-x-8 text-gray-800 dark:text-gray-300">
           <p>

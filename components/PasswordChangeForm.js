@@ -18,7 +18,7 @@ const PasswordChangeForm = () => {
     <>
       {error !== null && <Message error={error} message={message} />}
       <div className="text-dark dark:text-light ">
-        <h1 className="text-3xl font-bold">Change Password</h1>
+        <h1 className="text-2xl md:text-3xl font-bold">Change Password</h1>
         <p className="text-gray-600 dark:text-gray-300">
           To change your password, please provide your old password to confirm
           your identity.

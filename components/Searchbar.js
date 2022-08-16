@@ -23,7 +23,7 @@ const Searchbar = () => {
   return (
     <form
       onSubmit={submitHamdler}
-      className="text-black dark:text-white relative w-3/4 md:w-1/4 ring-1 dark:ring-gray-600 rounded-full p-2 bg-gray-100 dark:bg-transparent"
+      className="text-black dark:text-white relative w-3/4 lg:w-1/4 ring-1 dark:ring-gray-600 rounded-full p-2 bg-gray-100 dark:bg-transparent"
     >
       <input
         type="search"

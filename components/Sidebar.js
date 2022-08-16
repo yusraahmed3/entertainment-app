@@ -41,7 +41,7 @@ const Sidebar = () => {
     <div className="bg-light dark:bg-dark p-2 md:m-3 h-16 md:h-[600px] w-full md:w-14 flex md:flex-col items-center justify-between  md:rounded-md shadow-md dark:shadow-none">
       <div
         className={`flex md:flex-col text-dark dark:text-white items-center  justify-between md:w-auto ${
-          userState ? "w-80 md:h-96" : "w-full px-2 md:px-0 md:w-72 md:h-80"
+          userState ? "w-72 md:h-96" : "w-full px-2 md:px-0 md:w-72 md:h-80"
         }`}
       >
         <span className="text-4xl">

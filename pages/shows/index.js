@@ -16,7 +16,7 @@ const TVShows = ({ popular }) => {
   return (
     <div className="w-full h-full text-dark dark:text-light ">
       <Titles title="Popular TV Shows" />
-      <div className="flex flex-wrap justify-around w-full mt-5">
+      <div className="flex flex-wrap justify-evenly md:justify-start lg:justify-evenly w-full mt-5">
         {shows.map((show) => {
           return (
             <div key={show.id}>

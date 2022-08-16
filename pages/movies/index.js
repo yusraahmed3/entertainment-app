@@ -20,10 +20,10 @@ export default function Movies({ popular }) {
   return (
     <div className="w-full h-full text-dark dark:text-light">
       <Titles title="Popular Movies" />
-      <div className="flex flex-wrap w-full justify-evenly  mt-5">
+      <div className="flex flex-wrap w-full justify-evenly md:justify-start lg:justify-evenly mt-5">
         {movies.map((movie) => {
           return (
-            <div key={movie.id}>
+            <div key={movie.id} className="">
               <DiscoverMovies movie={movie} />
             </div>
           );

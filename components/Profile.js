@@ -28,7 +28,7 @@ const Profile = () => {
 
       <div className="text-dark dark:text-gray-300 flex flex-col space-y-10 w-full h-full">
         <Titles title="Profile settings" />
-        <form className="flex flex-col ">
+        <form className="flex flex-col md:px-5">
           <label>Email &nbsp;</label>
           <input
             readOnly

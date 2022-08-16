@@ -26,7 +26,7 @@ export default function Home({
           </div>
         </div>
         <div className="">
-          <div className="flex items-center space-x-3 w-full md:w-1/4">
+          <div className="flex items-center space-x-3 w-full lg:w-1/4">
             <Titles title="What's Popular" />
             <div className="space-x-8 ring-1 ring-gray-400 rounded-full w-36 flex overflow-hidden">
               <button

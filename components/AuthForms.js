@@ -34,7 +34,7 @@ export const Login = () => {
     <>
       {error !== null && <Message error={error} message={message} />}
       <form
-        className="flex flex-col space-y-8 text-dark dark:text-light mt-5"
+        className="flex flex-col space-y-8 text-dark dark:text-light mt-5 md:px-2"
         onSubmit={submitHandler}
       >
         <div>
@@ -103,7 +103,7 @@ export const SignUp = () => {
     <>
       {error && <Message error={error} message={message} />}
       <form
-        className="flex flex-col space-y-8 text-dark dark:text-light mt-5"
+        className="flex flex-col space-y-8 text-dark dark:text-light mt-5 md:px-2"
         onSubmit={submitHandler}
       >
         <div>

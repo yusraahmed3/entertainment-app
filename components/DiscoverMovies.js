@@ -20,9 +20,9 @@ const DiscoverMovies = ({ movie }) => {
               query: { id },
             });
       }}
-      className="w-32 md:w-56 my-2 cursor-pointer"
+      className="w-40 md:w-56 my-2 cursor-pointer"
     >
-      <div className="w-32 h-52 md:w-52 md:h-72 relative">
+      <div className="w-40 h-52 md:w-52 md:h-72 relative">
         <ImageComponent poster_path={movie?.poster_path} />
       </div>
       <div className="text-gray-800 dark:text-gray-400 text-sm flex items-center justify-between md:pr-5">

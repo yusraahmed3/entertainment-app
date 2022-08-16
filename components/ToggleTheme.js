@@ -17,24 +17,26 @@ const ToggleButton = () => {
       />
       <div
         className={`absolute bg-white ${
-          isDark ? "w-[2px]  translate-x-8" : "w-4"
-        }  right-16 rounded-[50%] ${
+          isDark ? "w-[2px]  translate-x-8 right-16" : "w-3 md:w-4"
+        }   rounded-[50%] ${
           isDark && "shadow-sm shadow-violet-500"
         } transition duration-200  h-[2px] `}
       ></div>
       <div
         className={`absolute bg-white ${
           isDark
-            ? "w-[2px] h-[2px] -translate-x-1 translate-y-1"
-            : "w-3 md:w-4 h-[1px] right-9 top-[102px] md:right-auto md:top-auto"
-        }  right-6 rounded-[50%] ${
+            ? "w-[2px] h-[2px] md:w-[3px] md:h-[3px] -translate-x-1 translate-y-1 right-7 md:right-6"
+            : "w-2 md:w-4 h-[1px] right-9 top-[102px] md:right-auto md:top-auto"
+        }   rounded-[50%] ${
           isDark && "shadow-sm shadow-violet-500"
         } transition duration-200`}
       ></div>
       <div
         className={`absolute bg-white ${
-          isDark ? "w-[4px] h-[4px] " : "w-5 md:w-6 h-1 top-[105px] md:top-auto"
-        } right-6 md:right-9 md:top-12 rounded-[50%] ${
+          isDark
+            ? "w-[4px] h-[4px]  "
+            : "w-4 md:w-6 h-[3px] top-[115px] md:top-auto"
+        } right-9 md:right-9 md:top-10 rounded-[50%] ${
           isDark && "shadow-sm shadow-violet-500"
         } transition duration-200 `}
       ></div>
@@ -42,15 +44,15 @@ const ToggleButton = () => {
         className={`absolute bg-white ${
           isDark
             ? "w-[3px] h-[3px] md:w-[5px] md:h-[5px] "
-            : " w-3 h-[3px] md:w-5 md:h-[3px]"
-        } right-7 md:right-10 top-[98px] md:top-7 z-20 rounded-[50%] ${
+            : " w-2 h-[3px] md:w-5 md:h-[3px]"
+        } right-10 top-[106px] md:top-6 z-20 rounded-[50%] ${
           isDark && "shadow-sm shadow-violet-500"
         } transition duration-200 `}
       ></div>
       {isDark && (
         <>
-          <div className="absolute bg-[#deb887] w-2  md:w-3 h-1 -rotate-45 top-[100px] md:top-[30px]  shadow-zinc-800 shadow-inner opacity-30 z-50 rounded-[50%]"></div>
-          <div className="absolute bg-[#deb887] w-1 md:w-2 h-2 -rotate-45 top-24 md:top-7 right-[37px] md:right-[53px] shadow-zinc-800 shadow-inner opacity-30 z-50 rounded-[50%]"></div>
+          <div className="absolute bg-[#deb887] w-2  md:w-3 h-1 -rotate-45 top-[105px] md:top-[25px]  shadow-zinc-800 shadow-inner opacity-30 z-50 rounded-[50%]"></div>
+          <div className="absolute bg-[#deb887] w-1 md:w-2 h-2 -rotate-45 top-[106px] md:top-7 right-[45px] md:right-[53px] shadow-zinc-800 shadow-inner opacity-30 z-50 rounded-[50%]"></div>
         </>
       )}
     </div>

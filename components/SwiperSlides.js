@@ -21,16 +21,9 @@ export const SwiperSlides = ({ data, onClick }) => {
       onClick={onClick}
       modules={[Navigation]}
       navigation
-      breakpoints={{
-        375: {
-          slidesPerView: "auto",
-        },
-        768: {
-          slidesPerView: 6,
-        },
-      }}
+      slidesPerView="auto"
       spaceBetween={10}
-      className="w-[28rem] md:w-[75rem] flex "
+      className="w-[28rem] md:w-[40rem] lg:w-[75rem] flex"
     >
       {data.results.map((item, i) => {
         return (
